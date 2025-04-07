@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Cabra Burguer</title>
+    <link rel="icon" type="image/png" href="img/logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+    <nav class="navbar navbar-expand-lg p-4">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="img/logo.png" alt="La Cabra Burguer" class="logo">
+            </a>
+            <button class="navbar-toggler custom-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav text-end">
+                    <li class="nav-item"><a class="nav-link" href="#menu">Menú</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                    <li class="nav-item">
+                        <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalCarrito">
+                            🛒 Ver Carrito (<span id="cantidad-carrito">0</span>)
+                        </button>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+
+    <div class="p-5">
+    </div>
+
+
+
+    <div class="menu-container container p-5" id="menu">
+        <h2 class="text-center mb-4">🍽️ NUESTRO MENU 🍔🥤</h2>
+        <div class="row">
+            <div class="col-md-4 p-4">
+                <div class="card">
+                    <img src="img/doble carne.png" class="card-img-top" alt="Hamburguesa Doble">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">🍔 Hamburguesa Doble</h5>
+                        <p class="card-text">🥬 Lechuga 🍅 Tomate 🧀 Queso Doble Crema 🧅 Cebolla Caramelizada 🥣 Aderezo de la Casa</p>
+                        <p><strong>💲 Precio:</strong> $17.000</p>
+                        <button class="btn btn-primary" onclick="mostrarCombo('Hamburguesa Doble', 17000)">🛒 Añadir</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 p-4">
+                <div class="card">
+                    <img src="img/clasical.jpeg" class="card-img-top" alt="Hamburguesa Clásica">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">🍔 Hamburguesa Clásica</h5>
+                        <p class="card-text">🥬 Lechuga 🍅 Tomate 🧀 Queso Doble Crema 🧅 Cebolla Caramelizada 🥣 Aderezo de la Casa</p>
+                        <p><strong>💲 Precio:</strong> $16.000</p>
+                        <button class="btn btn-primary" onclick="mostrarCombo('Hamburguesa Clásica', 16000)">🛒 Añadir</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 p-4">
+                <div class="card">
+                    <img src="img/clasica.jpg" class="card-img-top" alt="Hamburguesa Amarilla">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">🍔 Hamburguesa Amarilla</h5>
+                        <p class="card-text">🥬 Lechuga 🍅 Tomate 🌽 Maíz Tierno 🧀 Queso Doble Crema y Cheddar 🧅 Cebolla Caramelizada 🥣 Aderezo de la Casa</p>
+                        <p><strong>💲 Precio:</strong> $12.500</p>
+                        <button class="btn btn-primary" onclick="mostrarCombo('Hamburguesa Amarilla', 12500)">🛒 Añadir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 p-4">
+                <div class="card">
+                    <img src="img/negra.jpeg" class="card-img-top" alt="Hamburguesa Negra">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">🍔 Hamburguesa Negra</h5>
+                        <p class="card-text">🥬 Lechuga 🍅 Tomate 🥓 Tocineta 🧀 Queso Doble Crema 🥒 Pepinillos 🧅 Cebolla Caramelizada 🥣 Aderezo de la Casa</p>
+                        <p><strong>💲 Precio:</strong> $16.000</p>
+                        <button class="btn btn-primary" onclick="mostrarCombo('Hamburguesa Negra', 16000)">🛒 Añadir</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 p-4">
+                <div class="card">
+                    <img src="img/pork.jpg" class="card-img-top" alt="Hamburguesa Pork">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">🍖 Hamburguesa Pork</h5>
+                        <p class="card-text">🥬 Lechuga 🥓 Tocineta 🍖 Tiras de Costilla BBQ 🍅 Tomate 🧀 Queso Doble Crema 🧅 Cebolla Caramelizada 🥣 Aderezo de la Casa</p>
+                        <p><strong>💲 Precio:</strong> $25.000</p>
+                        <button class="btn btn-primary" onclick="mostrarCombo('Hamburguesa Pork', 25000)">🛒 Añadir</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 p-4">
+                <div class="card">
+                    <img src="img/coca-cola.jpg" class="card-img-top" alt="Gaseosa Coca-Cola">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">🥤 Coca-Cola</h5>
+                        <p class="card-text">Refrescante y deliciosa Coca-Cola 400ml</p>
+                        <p><strong>💲 Precio:</strong> $4.500</p>
+                        <button class="btn btn-primary" onclick="agregarAlCarritoV('Coca-Cola', 4500)">🛒 Añadir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-4 p-4">
+                <div class="card">
+                    <img src="img/pepsi.png" class="card-img-top" alt="Gaseosa Pepsi">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">🥤 Pepsi</h5>
+                        <p class="card-text">Refrescante y deliciosa Pepsi 400ml</p>
+                        <p><strong>💲 Precio:</strong> $4.500</p>
+                        <button class="btn btn-primary" onclick="agregarAlCarritoV('Pepsi', 4500)">🛒 Añadir</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 p-4">
+                <div class="card">
+                    <img src="img/postobon.png" class="card-img-top" alt="Gaseosa Postobon">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">🥤 Postobon</h5>
+                        <p class="card-text">Refrescante y deliciosa Postobon 400ml</p>
+                        <p><strong>💲 Precio:</strong> $4.500</p>
+                        <button class="btn btn-primary" onclick="agregarAlCarritoV('Postobon', 4500)">🛒 Añadir</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 p-4">
+                <div class="card">
+                    <img src="img/papas.jpeg" class="card-img-top" alt="Porción de Papas">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">🍟 Porción de Papas</h5>
+                        <p class="card-text">Deliciosas papas fritas con salsa a elección</p>
+                        <p><strong>💲 Precio:</strong> $6.000</p>
+                        <button class="btn btn-primary" onclick="agregarAlCarritoV('Porción de Papas', 6000)">🛒 Añadir</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+
+
+
+<!-- Modal de Confirmación -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-white" style="background-color: #1e1e1e;">
+      <div class="modal-body text-center">
+        <h5 id="confirmText">✅ Producto agregado</h5>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal para seleccionar combo -->
+<div class="modal fade" id="comboModal" tabindex="-1" aria-labelledby="comboModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="comboModalLabel">¿Deseas agregar combo?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <p>Agregar combo cuesta <strong>$5.000</strong> adicionales e incluye papas + bebida.</p>
+        <button class="btn btn-success me-2" id="btn-con-combo">✅ Con Combo (+$5.000)</button>
+        <button class="btn btn-secondary" id="btn-sin-combo">🚫 Sin Combo</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal del Carrito -->
+<div class="modal fade" id="modalCarrito" tabindex="-1" aria-labelledby="modalCarritoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCarritoLabel">🛒 Carrito de Compras</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Precio</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lista-carrito"></tbody>
+                </table>
+                <p class="text-end"><strong>Total: 💲<span id="total-carrito">0</span></strong></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalDatosCliente">Finalizar Compra</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para ingresar datos del cliente -->
+<div class="modal fade" id="modalDatosCliente" tabindex="-1" aria-labelledby="modalDatosClienteLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalDatosClienteLabel">📝 Ingrese sus datos</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formDatosCliente">
+                    <div class="mb-3">
+                        <label for="nombreCliente" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" id="nombreCliente" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="telefonoCliente" class="form-label">Teléfono</label>
+                        <input type="tel" class="form-control" id="telefonoCliente" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                <button class="btn btn-success" onclick="confirmarCompra()">Confirmar Compra</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="scripts/footer-component.js"></script>
+<footer-component></footer-component>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts/general.js"></script>
+    <!-- Botón flotante -->
+    <button id="floatingCart" class="floating-cart" data-bs-toggle="modal" data-bs-target="#modalCarrito">
+        🛒 (<span id="cantidad-carrito2">0</span>)
+    </button>
+</body>
+
+</html>

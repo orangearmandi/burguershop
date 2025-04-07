@@ -16,6 +16,7 @@ hosting/.cache
 # Firebase Emulators
 /firebase-*.zip
 /.firebase/
+firebase.html
 /emulator-ui/
 
 # Logs

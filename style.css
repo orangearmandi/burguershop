@@ -1,0 +1,281 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    background-image: url("img/i-like-food.min.min.min.min.min.min.svg");
+    color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.navbar {   
+    background: linear-gradient(135deg, #FF5733, #C70039);
+    padding-bottom: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.navbar-brand .logo {
+    height: 200px;
+    width: auto;
+    margin-bottom: -150px;
+    /* Hace que sobresalga */
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffcc00 !important;
+    /* Resaltado amarillo al pasar el mouse */
+}
+
+
+.menu-container {
+    max-width: 900px;
+    margin: 50px auto;
+    background: rgba(255, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(255, 0, 0, 0.2);
+    flex-grow: 1;
+}
+
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(230, 0, 0, 0.2);
+    transition: transform 0.3s;
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-body {
+    background: rgba(0, 0, 0, 0.8);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card img {
+    height: 200px;
+    /* Ajusta según necesidad */
+    object-fit: cover;
+}
+
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+
+.btn-primary {
+    background-color: #e44d26;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #c63c1e;
+}
+
+
+
+/* Modal Carrito - Dark Mode */
+#modalCarrito .modal-content {
+    background-color: #1e1e1e;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    color: #f1f1f1;
+}
+
+#modalCarrito .modal-header {
+    background-color: #333;
+    color: #ffcc00;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+#modalCarrito .modal-body {
+    background-color: #2b2b2b;
+}
+
+#modalCarrito .modal-footer {
+    background-color: #333;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+/* Tabla dentro del carrito */
+#modalCarrito .table {
+    background-color: #2b2b2b;
+    color: #f1f1f1;
+    border-radius: 8px;
+}
+
+#modalCarrito .table thead {
+    background-color: #444;
+    color: #ffcc00;
+}
+
+#modalCarrito .table tbody tr:hover {
+    background-color: #3c3c3c;
+}
+
+/* Botón eliminar */
+#modalCarrito .btn-danger {
+    font-size: 14px;
+    padding: 5px 10px;
+    border-radius: 6px;
+}
+
+/* Botón finalizar compra */
+#modalCarrito .btn-success {
+    font-size: 16px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: #28a745;
+    border: none;
+    color: #fff;
+}
+
+#modalCarrito .btn-success:hover {
+    background-color: #218838;
+}
+
+/* Botón cerrar */
+#modalCarrito .btn-close {
+    filter: invert(1);
+}
+
+/* Total carrito */
+#modalCarrito .text-end {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffcc00;
+    background-color: #3a3a3a;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+#total-carrito {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ff6b6b;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #4a2c2c;
+}
+
+/* Modal Datos Cliente - Dark Mode */
+#modalDatosCliente .modal-content {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+#modalDatosCliente .modal-header {
+    background-color: #0062cc;
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#modalDatosCliente .btn-close {
+    filter: invert(1);
+}
+
+#modalDatosCliente .form-control {
+    background-color: #2b2b2b;
+    color: #f1f1f1;
+    border: 1px solid #555;
+}
+
+#modalDatosCliente .form-label {
+    font-weight: bold;
+    color: #ddd;
+}
+
+#modalDatosCliente .modal-footer {
+    background-color: #2b2b2b;
+    display: flex;
+    justify-content: space-between;
+}
+
+#modalDatosCliente .btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
+#modalDatosCliente .btn-success {
+    background-color: #28a745;
+    border: none;
+}
+
+#modalDatosCliente .btn:hover {
+    opacity: 0.85;
+}
+
+/* Botón flotante del carrito */
+.floating-cart {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ffcc00;
+    border: none;
+    color: #000;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 50px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+
+/* 🌙 Estilo Dark para Modal */
+#comboModal .modal-content {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+    border: 1px solid #444;
+    border-radius: 10px;
+  }
+  
+  #comboModal .modal-header {
+    border-bottom: 1px solid #444;
+  }
+  
+  #comboModal .modal-title {
+    color: #fff;
+  }
+  
+  #comboModal .modal-body p {
+    color: #ccc;
+  }
+  
+  #comboModal .btn-close {
+    filter: invert(1);
+  }
+  
+  #comboModal .btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+  }
+  
+  #comboModal .btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+  }
+  
