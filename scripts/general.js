@@ -95,45 +95,55 @@ document.addEventListener("DOMContentLoaded", () => {
         actualizarCarrito();
     };
 
-    // Confirmar compra
+
+    
     window.confirmarCompra = () => {
         const nombreInput = document.getElementById("nombreCliente");
         const telefonoInput = document.getElementById("telefonoCliente");
         const nombre = nombreInput.value.trim();
         const telefono = telefonoInput.value.trim();
-
-        // Validaciones
+    
         if (carrito.length === 0) {
             alert("⚠️ No puede finalizar la compra con el carrito vacío.");
             return;
         }
-
+    
         if (!nombre.match(/^[a-zA-Z\s]+$/)) {
             alert("⚠️ Nombre inválido. Solo se permiten letras y espacios.");
             nombreInput.focus();
             return;
         }
-
+    
         if (!telefono.match(/^\d{7,15}$/)) {
-            alert("⚠️ Número de teléfono inválido. Debe contener entre 7 y 15 dígitos.");
+            alert("⚠️ Teléfono inválido. Entre 7 y 15 dígitos.");
             telefonoInput.focus();
             return;
         }
-
-        alert(`✅ Gracias por su compra, ${nombre}. Nos comunicaremos al ${telefono}.`);
-        let texto = carrito.map(item => `• ${item.nombre} - $${item.precio}`).join('\n');
-        alert(texto);
-        carrito = [];
-        actualizarCarrito();
-
-        // Cerrar modal
-        const modal = bootstrap.Modal.getInstance(document.getElementById("modalDatosCliente"));
-        modal.hide();
-
-        // Limpiar campos del formulario
-        nombreInput.value = "";
-        telefonoInput.value = "";
+    
+        guardarCompraEnFirebase(nombre, telefono, carrito)
+          .then(() => {
+            // Texto del resumen
+            let texto = carrito.map(item => `• ${item.nombre} - $${item.precio.toLocaleString()}`).join('<br>');
+            const total = carrito.reduce((sum, item) => sum + item.precio, 0).toLocaleString();
+    
+   
+            // Limpiar
+            carrito = [];
+            actualizarCarrito();
+    
+            const modal = bootstrap.Modal.getInstance(document.getElementById("modalDatosCliente"));
+            modal.hide();
+            nombreInput.value = "";
+            telefonoInput.value = "";
+          })
+          .catch((error) => {
+            console.error("❌ Error al guardar en Firebase:", error);
+            alert("❌ Hubo un error al registrar la compra. Intenta de nuevo.");
+          });
     };
+    
+    
+    
 
     // Manejo del botón flotante del carrito
     const floatingCart = document.getElementById("floatingCart");

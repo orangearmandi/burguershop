@@ -1,7 +1,47 @@
+/* Estilo del navbar */
+.navbar {
+  background: #ffffff;
+  padding-bottom: 15px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.navbar-brand .logo {
+  height: 140px;
+  width: auto;
+  margin-bottom: -100px; /* Hace que sobresalga */
+}
+
+.navbar-nav .nav-link {
+  color: rgb(254, 0, 0) !important;
+  font-weight: bold;
+  transition: color 0.3s ease-in-out;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ffcc00 !important; /* Resaltado amarillo al pasar el mouse */
+}
+
+/* Estilo específico para pantallas pequeñas (dispositivos móviles) */
+@media (max-width: 767px) {
+  .navbar-brand .logo {
+    height: 100px; /* Ajusta el tamaño del logo en pantallas pequeñas */
+    margin-bottom: 0; /* Elimina el margen para que no sobresalga */
+  }
+
+  .navbar-brand {
+    font-size: 1.2rem; /* Reduce el tamaño de la fuente del nombre */
+  }
+}
+
 body {
   font-family: Arial, sans-serif;
   background-color: #ffffff;
-  background-image: url("img/i-like-food.min.min.min.min.min.min.svg");
+  background-image: url("../img/i-like-food.min.min.min.min.min.min.svg");
   color: white;
   display: flex;
   flex-direction: column;
@@ -249,21 +289,4 @@ body {
 #comboModal .btn-secondary {
   background-color: #6c757d;
   border-color: #6c757d;
-}
-.hero-section {
-  background: url("img/clasica.jpg") center center / cover no-repeat;
-  min-height: 400px;
-  overflow: hidden;
-}
-
-.hero-section .overlay {
-  position: absolute;
-  inset: 0;
-  backdrop-filter: blur(6px);
-  background-color: rgba(0, 0, 0, 0.4); /* oscurece un poco para contraste */
-  z-index: 1;
-}
-
-.hero-section .container {
-  z-index: 1;
 }

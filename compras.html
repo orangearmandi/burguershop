@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>📦 Historial de Compras</title>
+    <script type="module" src="scripts/firebase-compras.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/comhis.css">
+</head>
+
+<body class="bg-dark ">
+
+  
+    <nav class="navbar navbar-expand-lg p-4">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="img/logo.png" alt="La Cabra Burguer" class="logo">
+            </a>
+            <button class="navbar-toggler custom-toggler ms-auto" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav text-end">
+                    <li class="nav-item"><a class="nav-link" href="#menu">Menú</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="p-4 bg-dark text-primary">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+
+
+            <h2>🛒 Compras Registradas</h2>
+
+            <button class="btn btn-primary" id="btn-exportar"><i class="bi bi-download me-1"></i>Exportar TXT</button>
+        </div>
+
+        <div id="contenedor-compras" class="row row-cols-1 row-cols-md-2 g-4"></div>
+    </div>
+</body>
+
+
+
+
+<script type="module">
+    import {
+      getDatabase,
+      ref,
+      onValue,
+      remove,
+      set
+    } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-database.js";
+    import {
+      initializeApp,
+      getApps
+    } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+    
+    // Configuración Firebase
+    const firebaseConfig = {
+      apiKey: "AIzaSyDVnEL6ZohDdFGIGIAMJHV-35G58FFC4Q0",
+      authDomain: "lacabraburgue.firebaseapp.com",
+      databaseURL: "https://lacabraburgue-default-rtdb.europe-west1.firebasedatabase.app",
+      projectId: "lacabraburgue",
+      storageBucket: "lacabraburgue.appspot.com",
+      messagingSenderId: "123254694860",
+      appId: "1:123254694860:web:880d05c81c600af376f369"
+    };
+    
+    // Inicializar Firebase
+    const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
+    const db = getDatabase(app);
+    const comprasRef = ref(db, "compras");
+    const historialRef = ref(db, "historial");
+    
+    const contenedor = document.getElementById("contenedor-compras");
+    const btnExportar = document.getElementById("btn-exportar");
+    
+    onValue(comprasRef, (snapshot) => {
+      contenedor.innerHTML = "";
+      const data = snapshot.val();
+    
+      if (!data) {
+        contenedor.innerHTML = "<p>No hay compras registradas.</p>";
+        return;
+      }
+    
+      const comprasOrdenadas = Object.entries(data).sort(([, a], [, b]) => new Date(b.fecha) - new Date(a.fecha));
+      let textoExportar = "";
+    
+      comprasOrdenadas.forEach(([id, compra]) => {
+        const total = compra.carrito.reduce((acc, item) => acc + item.precio, 0);
+        const fecha = new Date(compra.fecha).toLocaleString("es-CO");
+    
+        const tiempoTotalMin = 10 + (compra.carrito.length - 1) * 5;
+        const tiempoFinal = new Date(compra.fecha).getTime() + tiempoTotalMin * 60000;
+        const tiempoVencimientoRojo = tiempoFinal + 5 * 60000;
+    
+        const idCard = `card-${id}`;
+        const idCrono = `crono-${id}`;
+    
+        textoExportar += `Compra: ${id}\nCliente: ${compra.nombre}\nTeléfono: ${compra.telefono}\nFecha: ${fecha}\nTotal: $${total}\n`;
+        compra.carrito.forEach(item => {
+          textoExportar += ` - ${item.nombre} - $${item.precio}\n`;
+        });
+        textoExportar += "\n----------------------\n\n";
+    
+        const card = document.createElement("div");
+card.className = "col-12 col-md-6 col-lg-4 mb-4";
+card.innerHTML = `
+  <div class="card border-0 shadow-lg rounded-4 p-3 h-100" id="${idCard}">
+    <div class="card-body d-flex flex-column justify-content-between gap-3">
+      <div>
+        <h6 class="text-muted fs-6 mb-3">
+          <i class="bi bi-hash"></i> ID: <code class="fs-6">${id}</code>
+        </h6>
+        <p class="fs-5 lh-sm mb-3">
+          <i class="bi bi-person-fill me-1"></i><strong>Cliente:</strong> ${compra.nombre}<br>
+          <i class="bi bi-telephone-fill me-1"></i><strong>Teléfono:</strong> ${compra.telefono}<br>
+          <i class="bi bi-calendar-event me-1"></i><strong>Fecha:</strong> ${fecha}<br>
+          ⏱️ <strong>Tiempo restante:</strong> <span id="${idCrono}" class="text-danger fw-bold">calculando...</span>
+        </p>
+      </div>
+      <ul class="list-group list-group-flush fs-5 mb-3">
+        ${compra.carrito.map(item => `
+          <li class="list-group-item d-flex justify-content-between align-items-center px-3 py-2">
+            <span>${item.nombre}</span>
+            <span class="text-primary fw-semibold">$${item.precio}</span>
+          </li>
+        `).join("")}
+      </ul>
+      <div class="d-flex justify-content-between align-items-center mt-auto">
+        <span class="fs-4 fw-bold text-success">Total: $${total}</span>
+        <div class="d-flex flex-wrap gap-2">
+          <button class="btn btn-lg btn-outline-success rounded-pill px-3" id="entregado-${id}">
+            <i class="bi bi-check-circle"></i> Entregado
+          </button>
+          <button class="btn btn-lg btn-outline-danger rounded-pill px-3" id="no-entregado-${id}">
+            <i class="bi bi-x-circle"></i> No Entregado
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+`;
+
+    
+        contenedor.appendChild(card);
+    
+        // Cronómetro
+        const cronoEl = document.getElementById(idCrono);
+        const cardEl = document.getElementById(idCard);
+        const actualizarCrono = () => {
+          const ahora = Date.now();
+          if (ahora >= tiempoVencimientoRojo) {
+            cronoEl.textContent = "⛔ Tiempo excedido";
+            cronoEl.classList.add("text-danger", "fw-bold");
+            cardEl.classList.add("bg-danger-subtle", "border-danger");
+          } else if (ahora >= tiempoFinal) {
+            cronoEl.textContent = "¡Listo!";
+            cronoEl.classList.add("text-success");
+            cardEl.classList.add("bg-warning-subtle", "border-warning");
+          } else {
+            const diff = tiempoFinal - ahora;
+            const min = Math.floor(diff / 60000);
+            const sec = Math.floor((diff % 60000) / 1000);
+            cronoEl.textContent = `${min.toString().padStart(2, "0")}:${sec.toString().padStart(2, "0")}`;
+            setTimeout(actualizarCrono, 1000);
+          }
+        };
+        actualizarCrono();
+    
+        // Función para marcar pedido entregado/no entregado
+        const marcarEstado = async (estado) => {
+          try {
+            const ahora = new Date().toISOString();
+            const compraConEstado = {
+              ...compra,
+              estado,
+              entregadoEn: ahora
+            };
+    
+            await set(ref(db, `historial/${id}`), compraConEstado);
+            await remove(ref(db, `compras/${id}`));
+    
+            cardEl.classList.add(
+              estado === "entregado" ? "bg-success-subtle" :
+              estado === "no_entregado" ? "bg-danger-subtle" :
+              "bg-light"
+            );
+    
+            alert(`✅ Pedido ${estado.replace("_", " ")}.`);
+          } catch (error) {
+            console.error("Error:", error);
+            alert(`❌ Error al marcar como ${estado}.`);
+          }
+        };
+    
+        document.getElementById(`entregado-${id}`).onclick = () => marcarEstado("entregado");
+        document.getElementById(`no-entregado-${id}`).onclick = () => marcarEstado("no_entregado");
+      });
+    
+      // Exportar a .txt
+      btnExportar.onclick = () => {
+        const blob = new Blob([textoExportar], { type: "text/plain" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "compras.txt";
+        a.click();
+        URL.revokeObjectURL(url);
+      };
+    });
+    </script>
+    
+
+</body>
+
+</html>

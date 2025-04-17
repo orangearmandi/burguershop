@@ -1,0 +1,29 @@
+    .navbar {
+        background: linear-gradient(135deg, #FF5733, #C70039);
+        padding-bottom: 15px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .navbar-brand {
+        font-weight: bold;
+        font-size: 1.5rem;
+    }
+
+    .navbar-brand .logo {
+        height: 100px;
+        width: auto;
+
+        /* Hace que sobresalga */
+    }
+
+    .navbar-nav .nav-link {
+        color: white !important;
+        font-weight: bold;
+        transition: color 0.3s ease-in-out;
+    }
+
+    .navbar-nav .nav-link:hover {
+        color: #ffcc00 !important;
+        /* Resaltado amarillo al pasar el mouse */
+    }
+

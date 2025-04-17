@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+
+    <Placemark>
+        <name>las quintas, flandes</name>
+        <description>Dirección: mz 28 casa 15 - Departamento: tolima</description>
+        <Point>
+            <coordinates>-74.8178629,4.2768477,0</coordinates>
+        </Point>
+    </Placemark>
+
+    <Placemark>
+        <name>parques de anda lucia, girardot</name>
+        <description>Dirección: cr 19 8-21 - Departamento: cundinamarca</description>
+        <Point>
+            <coordinates>-74.8195993,4.2974496,0</coordinates>
+        </Point>
+    </Placemark>
+
+    <Placemark>
+        <name>ceiba, flandes</name>
+        <description>Dirección: cr 19 8-21 - Departamento: tolima</description>
+        <Point>
+            <coordinates>-74.814744,4.286869,0</coordinates>
+        </Point>
+    </Placemark>
+
+    <Placemark>
+        <name>los almendros, melgar</name>
+        <description>Dirección: mz c casa 7 - Departamento: tolima</description>
+        <Point>
+            <coordinates>-74.63228816,4.1941121,0</coordinates>
+        </Point>
+    </Placemark>
+
+    <Placemark>
+        <name>brisas de agua blanca, girardot</name>
+        <description>Dirección: cll 19#34-50 - Departamento: cundinamarca</description>
+        <Point>
+            <coordinates>-74.8173777,4.3144878,0</coordinates>
+        </Point>
+    </Placemark>
+
+    <Placemark>
+        <name>rescas, melgar</name>
+        <description>Dirección: arcosanti - Departamento: tolima</description>
+        <Point>
+            <coordinates>-74.6536453,4.193844,0</coordinates>
+        </Point>
+    </Placemark>
+
+    <Placemark>
+        <name>centro municipio, icononzo</name>
+        <description>Dirección: cr 6 #5-52 - Departamento: tolima</description>
+        <Point>
+            <coordinates>-74.533107,4.178016,0</coordinates>
+        </Point>
+    </Placemark>
+
+    <Placemark>
+        <name>brazarlosa, girardot</name>
+        <description>Dirección: barzalosa - Departamento: cundinamarca</description>
+        <Point>
+            <coordinates>-74.7908983,4.3642886,0</coordinates>
+        </Point>
+    </Placemark>
+
+    <Placemark>
+        <name>finca iguazalito, agua de dios</name>
+        <description>Dirección: manuel norte - Departamento: cundinamarca</description>
+        <Point>
+            <coordinates>-74.7243528,4.3658232,0</coordinates>
+        </Point>
+    </Placemark>
+
+    <Placemark>
+        <name>kennedy, girardot</name>
+        <description>Dirección: mz 49 casa 20 - Departamento: cundinamarca</description>
+        <Point>
+            <coordinates>-74.7857217,4.3146028,0</coordinates>
+        </Point>
+    </Placemark>
+
+    <Placemark>
+        <name>vereda san jose, silvania</name>
+        <description>Dirección: vereda san jose - Departamento: cundinamarca</description>
+        <Point>
+            <coordinates>-74.430608,4.3777918,0</coordinates>
+        </Point>
+    </Placemark>
+
+    <Placemark>
+        <name>obrero, girardot</name>
+        <description>Dirección:  - Departamento: cundinamarca</description>
+        <Point>
+            <coordinates>-74.804955,4.287229,0</coordinates>
+        </Point>
+    </Placemark>
+
+    <Placemark>
+        <name>capillas, flandes</name>
+        <description>Dirección: cra 7 11-42 - Departamento: tolima</description>
+        <Point>
+            <coordinates>-74.8134707,4.2892584,0</coordinates>
+        </Point>
+    </Placemark>
+
+    <Placemark>
+        <name>triana, flandes</name>
+        <description>Dirección: cll 7 7-07 - Departamento: tolima</description>
+        <Point>
+            <coordinates>-74.8140267,4.2857525,0</coordinates>
+        </Point>
+    </Placemark>
+
+    <Placemark>
+        <name>alfonso lopez, flandes</name>
+        <description>Dirección: cr 9 6-36 - Departamento: tolima</description>
+        <Point>
+            <coordinates>-74.8154823,4.2850588,0</coordinates>
+        </Point>
+    </Placemark>
+
+    <Placemark>
+        <name>centenario, girardot</name>
+        <description>Dirección: cll 10a 19-42 - Departamento: cundinamarca</description>
+        <Point>
+            <coordinates>-74.8002852,4.3092648,0</coordinates>
+        </Point>
+    </Placemark>
+
+    <Placemark>
+        <name>centenario, girardot</name>
+        <description>Dirección: cra 18 11 26 - Departamento: cundinamarca</description>
+        <Point>
+            <coordinates>-74.8148699,4.2989278,0</coordinates>
+        </Point>
+    </Placemark>
+
+    <Placemark>
+        <name>vereda piamonte, girardot</name>
+        <description>Dirección: vereda diamante km 8 - Departamento: cundinamarca</description>
+        <Point>
+            <coordinates>-74.7828406,4.3675719,0</coordinates>
+        </Point>
+    </Placemark>
+
+    <Placemark>
+        <name>centenario, girardot</name>
+        <description>Dirección: cll 10a 19-42 - Departamento: cundinamarca</description>
+        <Point>
+            <coordinates>-74.8148699,4.2989278,0</coordinates>
+        </Point>
+    </Placemark>
+
+    <Placemark>
+        <name>primavera ricaurte, ricaurte</name>
+        <description>Dirección: tr 11#11-16 - Departamento: cundinamarca</description>
+        <Point>
+            <coordinates>-74.7752842,4.2906319,0</coordinates>
+        </Point>
+    </Placemark>
+
+    <Placemark>
+        <name>villa magdalena, flandes</name>
+        <description>Dirección: mz h casa 15 - Departamento: tolima</description>
+        <Point>
+            <coordinates>-74.8135096,4.2902146,0</coordinates>
+        </Point>
+    </Placemark>
+</Document>
+</kml>
